@@ -1,0 +1,288 @@
+C:" This file was automatically converted from microjava bytecode
+    using mjc2wsl v1.1.0
+   -options:
+    popPush        (pp/ht):true
+    localVarBlocks (lo/gl):true
+    localsAsArrays (ar/sp):false
+    inlinePrint:           false
+";
+
+BEGIN
+VAR <
+	
+	mjvm_flag_jump := 0,
+	mjvm_statics := ARRAY(0,0),
+	mjvm_arrays := < >,
+	mjvm_objects := < >,
+	mjvm_estack := < >, mjvm_mstack := < > > :
+SKIP;
+ ACTIONS a14 :
+ a14 ==
+PUSH(mjvm_mstack,mjvm_locals_0);
+PUSH(mjvm_mstack,mjvm_locals_1);
+CALL a17
+ END
+ a17 ==
+PUSH(mjvm_estack,5);
+CALL a18
+ END
+ a18 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_1 := tempa;
+ENDVAR;
+CALL a19
+ END
+ a19 ==
+PUSH(mjvm_estack,99);
+CALL a24
+ END
+ a24 ==
+PUSH(mjvm_estack,0);
+CALL a25
+ END
+ a25 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a26
+ END
+ a26 ==
+PUSH(mjvm_estack,63);
+CALL a31
+ END
+ a31 ==
+PUSH(mjvm_estack,0);
+CALL a32
+ END
+ a32 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a33
+ END
+ a33 ==
+VAR < tempa := 0 > : 
+@Read_Line_Proc(VAR tempa, Standard_Input_Port);
+tempa := @String_To_List(tempa)[1];
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a34
+ END
+ a34 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_0 := tempa;
+ENDVAR;
+CALL a35
+ END
+ a35 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a36
+ END
+ a36 ==
+PUSH(mjvm_estack,0);
+CALL a37
+ END
+ a37 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a38
+ END
+ a38 ==
+PUSH(mjvm_estack,10);
+CALL a43
+ END
+ a43 ==
+PUSH(mjvm_estack,0);
+CALL a44
+ END
+ a44 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a45
+ END
+ a45 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a46
+ END
+ a46 ==
+PUSH(mjvm_estack,121);
+CALL a51
+ END
+ a51 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+IF tempb <> tempa THEN mjvm_flag_jump := 1 ELSE mjvm_flag_jump := 0 FI;
+ENDVAR;
+IF mjvm_flag_jump = 1 THEN CALL a66 ELSE CALL a54 FI;
+SKIP
+ END
+ a54 ==
+PUSH(mjvm_estack,105);
+CALL a59
+ END
+ a59 ==
+PUSH(mjvm_estack,0);
+CALL a60
+ END
+ a60 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a61
+ END
+ a61 ==
+VAR < tempa := 0 > : 
+@Read_Line_Proc(VAR tempa, Standard_Input_Port);
+tempa := @String_To_Num(tempa);
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a62
+ END
+ a62 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_1 := tempa;
+ENDVAR;
+CALL a63
+ END
+ a63 ==
+CALL a75;
+SKIP
+ END
+ a66 ==
+PUSH(mjvm_estack,99);
+CALL a71
+ END
+ a71 ==
+PUSH(mjvm_estack,0);
+CALL a72
+ END
+ a72 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a73
+ END
+ a73 ==
+VAR < tempa := 0 > : 
+@Read_Line_Proc(VAR tempa, Standard_Input_Port);
+tempa := @String_To_List(tempa)[1];
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a74
+ END
+ a74 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_0 := tempa;
+ENDVAR;
+CALL a75
+ END
+ a75 ==
+PUSH(mjvm_estack,10);
+CALL a80
+ END
+ a80 ==
+PUSH(mjvm_estack,0);
+CALL a81
+ END
+ a81 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a82
+ END
+ a82 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_1;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a83
+ END
+ a83 ==
+PUSH(mjvm_estack,5);
+CALL a84
+ END
+ a84 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ(tempb,tempa);
+ENDVAR;
+CALL a85
+ END
+ a85 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a86
+ END
+ a86 ==
+PUSH(mjvm_estack,5);
+CALL a87
+ END
+ a87 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a88
+ END
+ a88 ==
+POP(mjvm_locals_1, mjvm_mstack);
+POP(mjvm_locals_0, mjvm_mstack);
+CALL a89
+ END
+ a89 ==
+SKIP
+ END
+ b89 ==
+SKIP
+ END
+ENDACTIONS;
+
+SKIP
+ENDVAR
+
+WHERE
+
+FUNCT CHR(num) ==:
+	(@List_To_String(< num >))
+END
+
+PROC Print_MJ(val, format VAR)==
+PRINFLUSH(@Format(format, val ))
+END
+
+PROC Print_MJ_CHAR(val, format VAR)==
+PRINFLUSH(@Format(format, CHR(val)))
+END
+
+END

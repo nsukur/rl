@@ -1,0 +1,56 @@
+program MinSubarrayLen 
+    final int MAX_INT = 2147483647;
+{
+
+    // find minimal subarray length with
+    // a specific element sum
+
+    int minSLen(int s, int[] nums) 
+    int res, sum, left, right;
+    {
+        res = MAX_INT;
+        sum = 0;
+        left = 0;
+        right = 0;
+        while (right < len(nums)) {
+            sum = sum + nums[right];
+            while (sum >= s) {
+                if (res > right - left + 1) {
+                    res = right - left + 1;
+                }
+                sum = sum - nums[left];
+                left = left + 1;    
+            }
+            right++;
+        }
+        if (res == MAX_INT) {
+            return 0;
+        } else {
+            return res;
+        }
+    }
+
+    void main()
+    int l, i, c, sum;
+    int[] nums;
+    {
+        print('l');
+        print('?');
+        read(l);
+        nums = new int[l];
+        i = 0;
+        while (i < l) {
+            print('c');
+            print('?');
+            read(c);
+            nums[i] = c; 
+            i++;
+        }
+        print('s');
+        print('?');
+        read(sum);
+        print('R');
+        print('=');
+        print(minSLen(sum, nums));
+    }
+}

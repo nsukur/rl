@@ -1,0 +1,65 @@
+program TaskScheduler {
+    // array represents CPU tasks to be done
+    // different numbers represent different tasks
+    // order in which they are done is not important
+    // between two of the same, there is the interval n
+    // (cooling or doing another task)
+    // calculate the least number of intervals to finish all tasks
+
+    int max(int[] arr)
+    int i, max;
+    {
+        i = 0;
+        max = -2147483647;
+        while (i < len(arr)) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+            i++;
+        }
+
+        return max;
+    }
+    
+    int findTime(int[] tasks, int cooldown)
+    int current, i;
+    int[] lastPos;
+    {
+        i = 0;
+        current = 0;
+        lastPos = new int[max(tasks) + 1];
+
+        i = 0;
+        while (i < len(lastPos)) {
+            lastPos[i] = -1;
+            i++;
+        }
+        
+        i = 0;
+        while (i < len(tasks)) {
+            if (lastPos[tasks[i]] >= 0) {
+                if (current - lastPos[tasks[i]] <= cooldown) {
+                    current = cooldown + lastPos[tasks[i]] + 1;
+                }
+            }
+            lastPos[tasks[i]] = current;
+            current = current + 1;
+            i++;
+        }
+
+        return current;
+    }
+
+    void main()
+    int[] tasks;
+    {
+        tasks = new int[4];
+        tasks[0] = 1;
+        tasks[1] = 1;
+        tasks[2] = 2;
+        tasks[3] = 1;
+        print('R');
+        print('=');
+        print(findTime(tasks, 2));
+    }
+}

@@ -1,0 +1,70 @@
+program LengthOfLongest {
+    // longest substring without repeating letters
+
+    int lengthOfLongest(char[] s) 
+    int[] letters;
+    int tail, head, result, i;
+    {
+        letters = new int[26];
+        i = 0;
+        while (i < len(letters)) {
+            letters[i] = -1;
+            i++;
+        }
+
+        tail = -1;
+        head = 0;
+        result = 0;
+
+        while (head < len(s)) {
+            // if s[head] in letters, lower case only
+            if (ord(s[head]) >= 97 && ord(s[head]) <= 122) {
+                if (letters[ord(s[head]) - 97] >= 0) {
+                    if (letters[ord(s[head]) - 97] > tail) {
+                        tail = letters[ord(s[head]) - 97];
+                    }
+                }
+
+                letters[ord(s[head]) - 97] = head;
+                if (head - tail > result) {
+                    result = head - tail;
+                }
+            }
+            
+            head++;
+        }
+
+        return result;
+    }
+
+    char[] load() 
+		char[] res;
+        char in;
+		int c, num; {
+		print('l');
+		print('?');
+		read(num);
+		res = new char[num];
+                c = 0;
+                while (c<num) {
+                        print(c);
+                        print('?');
+                        read(in);
+                        if (ord(in) == 10) {
+                            read(in);
+                        }
+                        res[c] = in;
+                        c++;
+                }
+		return res;
+	}
+
+    void main() 
+    char[] in;
+    {
+        in = load();
+        print('R');
+        print('=');
+        print(lengthOfLongest(in));
+    }
+}

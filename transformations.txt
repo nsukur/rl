@@ -1,0 +1,54 @@
+Absorb Left
+Absorb Right
+Align Nested Statements
+Array_To_Vars
+Collapse Action System
+Constant Propagation
+D Do To Floop
+Decrement_Statement
+Delete All Assertions
+Delete All Skips
+Delete Item
+Delete Redundant Statement
+Delete What Follows
+Double to Single Loop
+Expand And Separate
+Expand Call
+Expand Forward
+Floop To While
+Fully Absorb Right
+Fully Expand Forward
+Join All Cases
+Make_Loop
+Merge Calls in Action
+Merge Calls
+Merge_Cond_Right
+Merge Left
+Merge Right
+Move To Left
+Move To Right
+Partially Join Cases
+Proc_To_Funct
+Push Pop
+Recursion To Loop
+Remove Redundant Vars
+Reverse Order
+Roll_Loop
+Separate_Both
+Separate_Left
+Separate_Right
+Simplify
+Simplify Action System
+Simplify If
+Simplify Item
+Stack_To_Par
+Stack_To_Return
+Stack_To_Var
+Substitute and Delete
+Take Out Of Loop
+Unroll_Loop
+Use_Assertion
+While_To_Abort
+While To Floop
+While_To_For_In
+While_To_Reduce

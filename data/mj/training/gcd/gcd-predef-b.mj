@@ -1,0 +1,17 @@
+program gcdpredef{
+
+	void main()
+		int a;
+		int b;
+	{
+		a=20;
+		b=8;
+		while (a != b) {
+			if (a>b) 
+				a = a-b;
+			if (a<b)
+				b = b-a;
+		}
+		print(a,3);
+	}
+}

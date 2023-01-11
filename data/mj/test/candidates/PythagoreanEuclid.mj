@@ -1,0 +1,26 @@
+program PythagoreanEuclid {
+    void main()
+    int a, b, c, m, n, limit;
+    {
+        limit = 10;
+        m = 1;
+        while (m <= limit) {
+            n = 1;
+            while (n <= m-1) {
+                a = 2*m*n;
+                b = m*m - n*n;
+                c = m*m + n*n;
+                print('\n');
+                print('a');
+                print(a, 4);
+                print('b', 4);
+                print(b, 4);
+                print('c', 4);
+                print(c, 4);
+                n++;
+            }
+            m++;
+        }
+        
+    }
+}

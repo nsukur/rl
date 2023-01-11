@@ -1,0 +1,53 @@
+program MaxProfit {
+    // buy when the value is the smallest
+    // sell afterwards when it is the highest
+
+    int maxProfit(int[] prices) 
+    int res, min, p;
+    {
+        if (prices != null) {
+            res = 0;
+            min = prices[0];
+            
+            p = 0;
+            while (p < len(prices)) {
+                if (prices[p] < min) {
+                    min = prices[p];
+                }
+                
+                if (prices[p] - min > res) {
+                    res = prices[p] - min;
+                }
+
+                p++;
+            }
+            return res;
+        } else {
+            return 0;
+        }
+    }
+
+    void main() 
+    int[] prices;
+    int l, c, i;
+    {
+        print('l');
+        print('?');
+        read(l);
+        prices = new int[l];
+
+        i = 0;
+        while (i < l) {
+            print('c');
+            print(i);
+            print('?');
+            read(c);
+            prices[i] = c;
+            i++;
+        }
+
+        print('R');
+        print('=');
+        print(maxProfit(prices));
+    }
+}

@@ -1,0 +1,21 @@
+ 1004  conda env create -f conda-env.yml 
+ 1005  conda activate rl
+ 1007  conda install -c bioconda perl-app-cpanminus
+ 1012  cd ~/miniconda3/envs/rl/lib/5.26.2/x86_64-linux-thread-multi
+ 1018  sed -i -E 's%/tmp/build/[a-zA-Z0-9]+/perl_[0-9]+/_build_env%/opt/conda%g' CORE/config.h 
+ 1019  sed -i -E 's%/tmp/build/[a-zA-Z0-9]+/perl_[0-9]+/_build_env%/opt/conda%g' Config.pm 
+ 1020  sed -i -E 's%/tmp/build/[a-zA-Z0-9]+/perl_[0-9]+/_build_env%/opt/conda%g' Config_heavy.pl 
+ 1021  sed -i "s/\/opt\/conda/\/home\/milosevicn\/miniconda3\/envs\/rl/g" CORE/config.h 
+ 1023  sed -i "s/\/opt\/conda/\/home\/milosevicn\/miniconda3\/envs\/rl/g" Config.pm
+ 1024  sed -i "s/\/opt\/conda/\/home\/milosevicn\/miniconda3\/envs\/rl/g" Config_heavy.pl 
+ 1029  conda install gcc_impl_linux-64
+ 1030  conda install gcc_linux-64
+ 1080  cd lib/5.26.2/x86_64-linux-thread-multi/
+ 1085  sed -i "s/cos6/cos7/g" Config.pm
+ 1087  sed -i "s/cos6/cos7/g" CORE/config.h
+ 1088  sed -i "s/cos6/cos7/g" Config_heavy.pl
+ 1103  cp /home/milosevicn/miniconda3/envs/rl/x86_64-conda-linux-gnu/sysroot /home/milosevicn/miniconda3/envs/rl/x86_64-conda_cos7-linux-gnu/ -r
+ 1110  cd /home/milosevicn/miniconda3/envs/rl/x86_64-conda_cos7-linux-gnu/sysroot/usr/
+ 1114  ln -s lib64 lib
+ 1118  cpanm Bit::Vector
+ 1120  cpanm Set::IntRange

@@ -1,0 +1,113 @@
+C:" This file was automatically converted from microjava bytecode
+    using mjc2wsl v1.1.0
+   -options:
+    popPush        (pp/ht):true
+    localVarBlocks (lo/gl):true
+    localsAsArrays (ar/sp):false
+    inlinePrint:           false
+";
+
+BEGIN
+VAR <
+	
+	mjvm_flag_jump := 0,
+	mjvm_statics := ARRAY(0,0),
+	mjvm_arrays := < >,
+	mjvm_objects := < >,
+	mjvm_estack := < >, mjvm_mstack := < > > :
+SKIP;
+ ACTIONS a14 :
+ a14 ==
+PUSH(mjvm_mstack,mjvm_locals_0);
+PUSH(mjvm_mstack,mjvm_locals_1);
+CALL a17
+ END
+ a17 ==
+PUSH(mjvm_estack,100);
+CALL a22
+ END
+ a22 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_0 := tempa;
+ENDVAR;
+CALL a23
+ END
+ a23 ==
+PUSH(mjvm_estack,0);
+CALL a24
+ END
+ a24 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_1 := tempa;
+ENDVAR;
+CALL a25
+ END
+ a25 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a26
+ END
+ a26 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_1;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a27
+ END
+ a27 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+IF tempa = 0 THEN ERROR("division by zero") FI;
+tempres := tempb DIV tempa;
+PUSH(mjvm_estack,tempres);
+ENDVAR;
+CALL a28
+ END
+ a28 ==
+PUSH(mjvm_estack,0);
+CALL a29
+ END
+ a29 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ(tempb,tempa);
+ENDVAR;
+CALL a30
+ END
+ a30 ==
+POP(mjvm_locals_1, mjvm_mstack);
+POP(mjvm_locals_0, mjvm_mstack);
+CALL a31
+ END
+ a31 ==
+SKIP
+ END
+ b31 ==
+SKIP
+ END
+ENDACTIONS;
+
+SKIP
+ENDVAR
+
+WHERE
+
+FUNCT CHR(num) ==:
+	(@List_To_String(< num >))
+END
+
+PROC Print_MJ(val, format VAR)==
+PRINFLUSH(@Format(format, val ))
+END
+
+PROC Print_MJ_CHAR(val, format VAR)==
+PRINFLUSH(@Format(format, CHR(val)))
+END
+
+END

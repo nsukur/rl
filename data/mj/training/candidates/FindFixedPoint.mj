@@ -1,0 +1,53 @@
+program FindFixedPoint {
+    // value equal to index
+    // binary search
+    // input array is sorted
+
+    int search(int low, int high, int[] nums)
+    int mid;
+    {
+        if (low == high) {
+            return -1;
+        }
+        mid = (low + high) / 2;
+        if (nums[mid] == mid) {
+            return mid;
+        }
+        if (nums[mid] < mid) {
+            return search(mid + 1, high, nums);
+        }
+        return search(low, mid, nums);
+    }
+
+    int findFixedPoint(int[] nums)
+    {
+        return search(0, len(nums), nums);
+    }
+
+    int[] init()
+    int[] res;
+    {
+        res = new int[4];
+        res[0] = -5;
+        res[1] = -1;
+        res[2] = 1;
+        res[3] = 3;
+
+        return res;
+    }
+    
+    void main()
+    int[] nums;
+    int res;
+    {
+        nums = init();
+        res = findFixedPoint(nums);
+        if (res != -1) {
+            print('R');
+            print('=');
+            print(res);
+        } else {
+            print('E'); print('r'); print('r');
+        }
+    }
+}

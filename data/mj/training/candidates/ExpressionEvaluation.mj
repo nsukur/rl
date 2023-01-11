@@ -1,0 +1,49 @@
+program ExpressionEvaluation 
+    class Node {
+        char value;
+        Node left;
+        Node right;
+    }
+
+    Node root;
+{
+    int evaluate(Node root) {
+        if (root.value == '+') {
+            return evaluate(root.left) + evaluate(root.right);
+        } else if (root.value == '-') {
+            return evaluate(root.left) - evaluate(root.right);
+        } else if (root.value == '*') {
+            return evaluate(root.left) * evaluate(root.right);
+        } else if (root.value == '/') {
+            return evaluate(root.left) / evaluate(root.right);
+        } else {
+            return ord(root.value) - 48;
+        }
+    }
+
+    void init() {
+        root = new Node;
+        root.value = '*';
+        
+        root.left = new Node;
+        root.left.value = '+';
+        root.left.left = new Node;
+        root.left.left.value = '3';
+        root.left.right = new Node;
+        root.left.right.value = '2';
+        
+        root.right = new Node;
+        root.right.value = '+';
+        root.right.left = new Node;
+        root.right.left.value = '4';
+        root.right.right = new Node;
+        root.right.right.value = '5';
+    }
+
+    void main() {
+        init();
+        print('R');
+        print('=');
+        print(evaluate(root));
+    }
+}

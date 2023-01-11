@@ -1,0 +1,42 @@
+program Permutations {
+    void permutations(int[] solution, int pos, int num, int nums) 
+    int i;
+    {
+        if (pos == nums) {
+            i = 0;
+            while (i < len(solution)) {
+                print(solution[i]);
+                print(' ');
+                i++;
+            }
+            print('\n');
+        }
+        else {
+            i = 1;
+            while (i <= nums) {
+                solution[pos] = i;
+                permutations(solution, pos+1, i, nums);
+                i++;
+            }
+        }   
+    }
+
+    void perms(int[] sln, int num) {
+        if (num > 0) {
+            print('-');print('-');print('-');
+            print('\n');
+            permutations(sln, 0, 1, num);
+        }
+    }
+
+    void main() 
+    int i, dimension;
+    int[] solution;
+    {
+        print('d');
+        print('?');
+        read(dimension);
+        solution = new int[dimension];
+        perms(solution, dimension);
+    }
+}

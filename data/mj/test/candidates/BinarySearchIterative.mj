@@ -1,0 +1,55 @@
+program BinarySearchIterative {
+	int[] load() 
+		int[] res;
+		int c,num,in; {
+		print('l');
+		print('?');
+		read(num);
+		res = new int[num];
+                c = 0;
+                while (c<num) {
+                        print(c);
+                        print('?');
+                        read(in);
+                        res[c] = in;
+                        c++;
+                }
+		return res;
+	}
+	
+	int binarySearch(int[] nums, int value)
+	int hi, lo, guess;
+	{
+        lo = 0;
+        hi = len(nums) - 1;
+		while (hi >= lo) {
+            guess = (lo + hi) / 2;
+            if (nums[guess] > value) {
+                hi = guess - 1;
+            } else if (nums[guess] < value) {
+                lo = guess + 1;
+            } else {
+                return guess;
+            }
+        }
+        return -1;
+	}
+
+	void main()	
+	int[] nums;
+	int value, index;
+	{
+		nums = load();
+
+		print('n');
+		print('?');
+		read(value);
+
+		index = binarySearch(nums, value);
+		
+		print('\n');
+		print(value);
+		print(':');
+		print(index);
+	}
+}

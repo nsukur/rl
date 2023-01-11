@@ -1,0 +1,245 @@
+C:" This file was automatically converted from microjava bytecode
+    using mjc2wsl v1.1.0
+   -options:
+    popPush        (pp/ht):true
+    localVarBlocks (lo/gl):true
+    localsAsArrays (ar/sp):false
+    inlinePrint:           false
+";
+
+BEGIN
+VAR <
+	
+	mjvm_flag_jump := 0,
+	mjvm_statics := ARRAY(3,0),
+	mjvm_arrays := < >,
+	mjvm_objects := < >,
+	mjvm_estack := < >, mjvm_mstack := < > > :
+SKIP;
+ ACTIONS a14 :
+ a14 ==
+CALL a17
+ END
+ a17 ==
+PUSH(mjvm_estack,10);
+CALL a22
+ END
+ a22 ==
+POP(mjvm_statics[3], mjvm_estack);
+CALL a25
+ END
+ a25 ==
+PUSH(mjvm_estack,mjvm_statics[3]);
+CALL a28
+ END
+ a28 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_arrays := mjvm_arrays ++ < ARRAY(tempa,0) >;
+PUSH(mjvm_estack,LENGTH(mjvm_arrays));
+ENDVAR;
+CALL a30
+ END
+ a30 ==
+POP(mjvm_statics[1], mjvm_estack);
+CALL a33
+ END
+ a33 ==
+PUSH(mjvm_estack,0);
+CALL a34
+ END
+ a34 ==
+POP(mjvm_statics[2], mjvm_estack);
+CALL a37
+ END
+ a37 ==
+PUSH(mjvm_estack,mjvm_statics[2]);
+CALL a40
+ END
+ a40 ==
+PUSH(mjvm_estack,mjvm_statics[3]);
+CALL a43
+ END
+ a43 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+IF tempb >= tempa THEN mjvm_flag_jump := 1 ELSE mjvm_flag_jump := 0 FI;
+ENDVAR;
+IF mjvm_flag_jump = 1 THEN CALL a71 ELSE CALL a46 FI;
+SKIP
+ END
+ a46 ==
+PUSH(mjvm_estack,mjvm_statics[1]);
+CALL a49
+ END
+ a49 ==
+PUSH(mjvm_estack,mjvm_statics[2]);
+CALL a52
+ END
+ a52 ==
+PUSH(mjvm_estack,mjvm_statics[3]);
+CALL a55
+ END
+ a55 ==
+PUSH(mjvm_estack,mjvm_statics[2]);
+CALL a58
+ END
+ a58 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+tempres := tempb - tempa;
+PUSH(mjvm_estack,tempres);
+ENDVAR;
+CALL a59
+ END
+ a59 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempres, mjvm_estack);
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+mjvm_arrays[tempb][tempa+1]:=tempres;
+ENDVAR;
+CALL a60
+ END
+ a60 ==
+PUSH(mjvm_estack,mjvm_statics[2]);
+CALL a63
+ END
+ a63 ==
+PUSH(mjvm_estack,1);
+CALL a64
+ END
+ a64 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+tempres := tempb + tempa;
+PUSH(mjvm_estack,tempres);
+ENDVAR;
+CALL a65
+ END
+ a65 ==
+POP(mjvm_statics[2], mjvm_estack);
+CALL a68
+ END
+ a68 ==
+CALL a37;
+SKIP
+ END
+ a71 ==
+PUSH(mjvm_estack,0);
+CALL a72
+ END
+ a72 ==
+POP(mjvm_statics[2], mjvm_estack);
+CALL a75
+ END
+ a75 ==
+PUSH(mjvm_estack,mjvm_statics[2]);
+CALL a78
+ END
+ a78 ==
+PUSH(mjvm_estack,mjvm_statics[1]);
+CALL a81
+ END
+ a81 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+tempb := LENGTH(mjvm_arrays[tempa]);
+PUSH(mjvm_estack,tempb);
+ENDVAR;
+CALL a82
+ END
+ a82 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+IF tempb >= tempa THEN mjvm_flag_jump := 1 ELSE mjvm_flag_jump := 0 FI;
+ENDVAR;
+IF mjvm_flag_jump = 1 THEN CALL a105 ELSE CALL a85 FI;
+SKIP
+ END
+ a85 ==
+PUSH(mjvm_estack,mjvm_statics[1]);
+CALL a88
+ END
+ a88 ==
+PUSH(mjvm_estack,mjvm_statics[2]);
+CALL a91
+ END
+ a91 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+PUSH(mjvm_estack,mjvm_arrays[tempb][tempa+1]);
+ENDVAR;
+CALL a92
+ END
+ a92 ==
+PUSH(mjvm_estack,3);
+CALL a93
+ END
+ a93 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ(tempb,tempa);
+ENDVAR;
+CALL a94
+ END
+ a94 ==
+PUSH(mjvm_estack,mjvm_statics[2]);
+CALL a97
+ END
+ a97 ==
+PUSH(mjvm_estack,1);
+CALL a98
+ END
+ a98 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+tempres := tempb + tempa;
+PUSH(mjvm_estack,tempres);
+ENDVAR;
+CALL a99
+ END
+ a99 ==
+POP(mjvm_statics[2], mjvm_estack);
+CALL a102
+ END
+ a102 ==
+CALL a75;
+SKIP
+ END
+ a105 ==
+CALL a106
+ END
+ a106 ==
+SKIP
+ END
+ b106 ==
+SKIP
+ END
+ENDACTIONS;
+
+SKIP
+ENDVAR
+
+WHERE
+
+FUNCT CHR(num) ==:
+	(@List_To_String(< num >))
+END
+
+PROC Print_MJ(val, format VAR)==
+PRINFLUSH(@Format(format, val ))
+END
+
+PROC Print_MJ_CHAR(val, format VAR)==
+PRINFLUSH(@Format(format, CHR(val)))
+END
+
+END

@@ -1,0 +1,208 @@
+program ParseNumbersFSM
+    // begin (0)
+    // negative 1 (1)
+    // digit 1 (2)
+    // dot (3)
+    // digit 2 (4)
+    // e = e (5)
+    // negative 2 (6)
+    // digit 3 (7)
+    
+    class DigitState {
+        int[] next;
+    }
+
+    DigitState[] states;
+    char[] input;
+{
+    void init() 
+    int i;
+    {
+        states = new DigitState[8];
+        i = 0;
+        while (i < len(states)) {
+            states[i] = new DigitState;
+            i++;
+        }
+        
+        states[0].next = new int[3];
+        states[0].next[0] = 1;
+        states[0].next[1] = 2;
+        states[0].next[2] = 3;
+
+        states[1].next = new int[2];
+        states[1].next[0] = 2;
+        states[1].next[1] = 3;
+
+        states[2].next = new int[3];
+        states[2].next[0] = 2;
+        states[2].next[1] = 3;
+        states[2].next[2] = 5;
+
+        states[3].next = new int[1];
+        states[3].next[0] = 4;
+
+        states[4].next = new int[2];
+        states[4].next[0] = 4;
+        states[4].next[1] = 5;
+
+        states[5].next = new int[2];
+        states[5].next[0] = 6;
+        states[5].next[1] = 7;
+
+        states[6].next = new int[1];
+        states[6].next[0] = 7;
+
+        states[7].next = new int[1];
+        states[7].next[0] = 7;
+    }
+
+    int check(int number, char symbol) {
+        if (number == 0) {
+            return 1;
+        } else if (number == 1) {
+            if (symbol == '-') {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else if (number == 2) {
+            if (ord(symbol) >= 48 && ord(symbol) <= 57) {
+                return 1;
+            }
+        } else if (number == 3) {
+            if (symbol == '.') {
+                return 1;
+            }
+        } else if (number == 4) {
+            if (ord(symbol) >= 48 && ord(symbol) <= 57) {
+                return 1;
+            }
+        } else if (number == 5) {
+            if (symbol == 'e') {
+                return 1;
+            }
+        } else if (number == 6) {
+            if (symbol == '-') {
+                return 1;
+            }
+        } else if (number == 7) {
+            if (ord(symbol) >= 48 && ord(symbol) <= 57) {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    int parseNumber(char[] s) 
+    int state, i, j, foundNextState;
+    {
+        state = 0;
+        i = 0;
+        while (i < len(s)) {
+            foundNextState = 0;
+            j = 0;
+
+            while (j < len(states[state].next) && foundNextState == 0) {
+                if (check(states[state].next[j], s[i]) == 1) {
+                    state = states[state].next[j];
+                    foundNextState = 1;
+                }
+                j++;
+            }
+
+            if (foundNextState == 0) {
+                return 0;
+            }
+
+            i++;
+        }
+
+        if (state == 2 || state == 4 || state == 7) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    void input1() {
+        input = new char[9];
+        input[0] = '1';
+        input[1] = '2';
+        input[2] = '.';
+        input[3] = '3';
+        input[4] = '4';
+        input[5] = 'e';
+        input[6] = '-';
+        input[7] = '5';
+        input[8] = '5';
+    }
+
+    void input2() {
+        input = new char[3];
+        input[0] = 'e';
+        input[1] = '2';
+        input[2] = '1';
+    }
+
+    void input3() {
+        input = new char[4];
+        input[0] = '1';
+        input[1] = '.';
+        input[2] = '2';
+        input[3] = '5';
+    }
+
+    void load()
+    int c, num;
+    char in;
+    {
+		print('l');
+        print('?');
+        read(num);
+		input = new char[num];
+        c = 0;
+        while (c < num) {
+            print(c);
+            print('?');
+            read(in);
+            if (ord(in) == 10) {
+                read(in);
+            }
+            input[c] = in;
+            c++;
+        }
+    }
+
+    void checkInput() {
+        if (parseNumber(input) == 1) {
+            print('T');
+        } else {
+            print('F');
+        }
+        print('\n');
+    }
+
+    void main() 
+    int i;
+    {
+        init();
+        print('i');
+        print('?');
+        read(i);
+        if (i == 0) {
+            input1();
+            checkInput();
+
+            input2();
+            checkInput();
+
+            input3();
+            checkInput();
+        } else {
+            load();
+            checkInput();
+        }
+    }
+}

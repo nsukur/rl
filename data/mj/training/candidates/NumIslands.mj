@@ -1,0 +1,114 @@
+program NumIslands 
+    // count the islands and sink them
+
+    class Row {
+        int[] fields;
+    }
+
+    class Grid {
+        Row[] rows;
+    }
+
+    Grid g;
+{
+    void sinkIsland(Grid grid, int r, int c)
+    {
+        if (grid.rows[r].fields[c] == 1) {
+            grid.rows[r].fields[c] = 0;
+
+            if (r + 1 < len(grid.rows)) {
+                sinkIsland(grid, r + 1, c);
+            }
+            if (r - 1 >= 0) {
+                sinkIsland(grid, r - 1, c);
+            }
+            if (c + 1 < len(grid.rows[0].fields)) {
+                sinkIsland(grid, r, c + 1);
+            }
+            if (c - 1 >= 0) {
+                sinkIsland(grid, r, c - 1);
+            }
+        }
+    }
+    
+    int numIslands(Grid grid)
+    int counter, i, j;
+    {
+        counter = 0;
+        i = 0;
+        while (i < len(grid.rows)) {
+            j = 0;
+            while (j < len(grid.rows[0].fields)) {
+                if (grid.rows[i].fields[j] == 1) {
+                    counter = counter + 1;
+                    sinkIsland(grid, i, j);
+                }
+                j++;
+            }
+            i++;
+        }
+        return counter;
+    }
+
+    Grid setup()
+    int i, j;
+    Grid grid;
+    {
+        grid = new Grid;
+        grid.rows = new Row[3];
+        i = 0;
+        while (i < len(grid.rows)) {
+            grid.rows[i] = new Row;
+            grid.rows[i].fields = new int[3];
+            j = 0;
+            while (j < len(grid.rows[i].fields)) {
+                grid.rows[i].fields[j] = 0;
+                j++;
+            }
+            i++;
+        }
+
+        grid.rows[0].fields[0] = 1;
+        grid.rows[0].fields[1] = 0;
+        grid.rows[0].fields[2] = 0;
+        grid.rows[1].fields[0] = 0;
+        grid.rows[1].fields[1] = 1;
+        grid.rows[1].fields[2] = 1;
+        grid.rows[2].fields[0] = 0;
+        grid.rows[2].fields[1] = 1;
+        grid.rows[2].fields[2] = 1;
+
+        return grid;
+
+    }
+
+    void printGrid() 
+    int i, j;
+    {
+        i = 0;
+        while (i < len(g.rows)) {
+            j = 0;
+            while (j < len(g.rows[i].fields)) {
+                print(g.rows[i].fields[j], 4);
+                if (j == len(g.rows[i].fields) - 1) {
+                    print('\n');
+                }
+                j++;
+            }
+            i++;
+        }
+    }
+
+    void main() 
+    {
+        g = setup();
+        print('S'); print(':');
+        print('\n');
+        printGrid();
+        print('N');
+        print(':');
+        print(numIslands(g), 3);
+        print('\n');
+        printGrid();
+    }
+}

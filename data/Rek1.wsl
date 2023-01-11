@@ -1,0 +1,137 @@
+C:" This file was automatically converted from microjava bytecode
+    using mjc2wsl v1.1.0
+   -options:
+    popPush        (pp/ht):true
+    localVarBlocks (lo/gl):true
+    localsAsArrays (ar/sp):false
+    inlinePrint:           false
+";
+
+BEGIN
+VAR <
+	
+	mjvm_flag_jump := 0,
+	mjvm_statics := ARRAY(0,0),
+	mjvm_arrays := < >,
+	mjvm_objects := < >,
+	mjvm_estack := < >, mjvm_mstack := < > > :
+SKIP;
+ ACTIONS a33 :
+ a14 ==
+PUSH(mjvm_mstack,mjvm_locals_0);
+POP(mjvm_locals_0, mjvm_estack);
+CALL a17
+ END
+ a17 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a18
+ END
+ a18 ==
+PUSH(mjvm_estack,0);
+CALL a19
+ END
+ a19 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ(tempb,tempa);
+ENDVAR;
+CALL a20
+ END
+ a20 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a21
+ END
+ a21 ==
+PUSH(mjvm_estack,0);
+CALL a22
+ END
+ a22 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+IF tempb <= tempa THEN mjvm_flag_jump := 1 ELSE mjvm_flag_jump := 0 FI;
+ENDVAR;
+IF mjvm_flag_jump = 1 THEN CALL a31 ELSE CALL a25 FI;
+SKIP
+ END
+ a25 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a26
+ END
+ a26 ==
+PUSH(mjvm_estack,1);
+CALL a27
+ END
+ a27 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+tempres := tempb - tempa;
+PUSH(mjvm_estack,tempres);
+ENDVAR;
+CALL a28
+ END
+ a28 ==
+CALL a14;
+CALL a31
+ END
+ a31 ==
+POP(mjvm_locals_0, mjvm_mstack);
+CALL a32
+ END
+ a32 ==
+SKIP
+ END
+ b32 ==
+CALL a33
+ END
+ a33 ==
+CALL a36
+ END
+ a36 ==
+PUSH(mjvm_estack,5);
+CALL a37
+ END
+ a37 ==
+CALL a14;
+CALL a40
+ END
+ a40 ==
+CALL a41
+ END
+ a41 ==
+SKIP
+ END
+ b41 ==
+SKIP
+ END
+ENDACTIONS;
+
+SKIP
+ENDVAR
+
+WHERE
+
+FUNCT CHR(num) ==:
+	(@List_To_String(< num >))
+END
+
+PROC Print_MJ(val, format VAR)==
+PRINFLUSH(@Format(format, val ))
+END
+
+PROC Print_MJ_CHAR(val, format VAR)==
+PRINFLUSH(@Format(format, CHR(val)))
+END
+
+END

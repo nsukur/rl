@@ -1,0 +1,59 @@
+program MaxSubarrayBruteForce {
+    int[] load() 
+		int[] res;
+		int c,num,in; {
+		print('l');
+		print('?');
+		read(num);
+		res = new int[num];
+                c = 0;
+                while (c<num) {
+                        print(c);
+                        print('?');
+                        read(in);
+                        res[c] = in;
+                        c++;
+                }
+		return res;
+	}
+    
+    void main() 
+    int N, max, suma, d, g, i, ood, doo;
+    int[] x;
+    {
+        x = load();
+        N = len(x);
+
+        max = 0;
+        d = 0;
+        while (d < N) {
+            g = d;
+            while (g < N) {
+                suma = 0;
+                i = d;
+                while(i <= g) {
+                    suma = suma + x[i];
+                    i++;
+                }
+                if (suma > max) {
+                    max = suma;
+                    ood = d;
+                    doo = g;
+                }
+                g++;
+            }
+            d++;
+        }
+        print('\n');
+        print('m');
+        print('=');
+        print(max);
+        
+        print('\n');
+        print('i');
+        print('=');
+        print(ood);
+        print('-');
+        print(doo);
+    }
+}

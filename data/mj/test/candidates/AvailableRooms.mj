@@ -1,0 +1,90 @@
+program AvailableRooms 
+    class Interval {
+        int[] time;
+    }
+{
+    void sort(int[] arr)
+		int i, j, key;
+	{
+		i = 1;
+		while (i < len(arr)) {
+			key = arr[i];
+			j = i - 1;
+
+			while (j >= 0 && arr[j] > key) {
+				arr[j + 1] = arr[j];
+				j--;
+			}
+			arr[j + 1] = key;
+
+			i++;
+		}
+	}
+    
+    int availableRooms(Interval[] intervals)
+    int[] start, end;
+    int i, s, e, numRooms, available;
+    {
+        start = new int[len(intervals)];
+        end = new int[len(intervals)];
+
+        i = 0;
+        while (i < len(intervals)) {
+            start[i] = intervals[i].time[0];
+            end[i] = intervals[i].time[1];
+            i++;
+        }
+
+        sort(start);
+        sort(end);
+        
+        s = 0;
+        e = 0;
+        numRooms = 0;
+        available = 0;
+
+        while (s < len(start)) {
+            if (start[s] < end[e]) {
+                if (available > 0) {
+                    available = available - 1;
+                } else {
+                    numRooms = numRooms + 1;
+                }
+                s = s + 1;
+            } else {
+                available = available + 1;
+                e = e + 1;
+            }
+            s++;
+        }
+
+        return numRooms;
+    }
+
+    void main()
+    Interval i;
+    Interval[] intervals;
+    int l, c, s, e;
+    {
+        print('l');
+        print('?');
+        read(l);
+        intervals = new Interval[l];
+        c = 0;
+        i = new Interval;
+        i.time = new int[2];
+        while (c < l) {
+            print('s'); print('?');
+            read(s);
+            print('e'); print('?');
+            read(e);
+            i.time[0] = s;
+            i.time[1] = e;
+
+            intervals[c] = i;
+
+            c++;
+        }
+        print(availableRooms(intervals));
+    }
+}

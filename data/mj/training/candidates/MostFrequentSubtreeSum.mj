@@ -1,0 +1,69 @@
+program MostFrequentSubtreeSum 
+    // input values and sums must be in range 0 - 99 
+
+    class Node {
+        int value;
+        Node left;
+        Node right;
+    }
+
+    int[] counter;
+{
+    int buildFrequencies(Node root) 
+    int total;
+    {
+        if (root == null) {
+            return 0;
+        }
+
+        total = root.value + buildFrequencies(root.left) + buildFrequencies(root.right);
+        counter[total] = counter[total] + 1;
+
+        return total;
+    }
+
+    int mostFrequentSubtreeSum(Node root)
+    int mostCommonSum, i, t;
+    {
+        t = buildFrequencies(root);
+        mostCommonSum = 0;
+        i = 0;
+
+        while (i < len(counter)) {
+            if (counter[i] > counter[mostCommonSum]) {
+                mostCommonSum = i;
+            }
+            i++;
+        }
+
+        return mostCommonSum;
+    }
+
+    Node input() 
+    Node n;
+    {
+        counter = new int[100];
+        
+        n = new Node;
+        n.value = 1;
+        n.left = new Node;
+        n.left.value = 2;
+        n.left.left = new Node;
+        n.left.left.value = 1;
+        n.left.right = new Node;
+        n.left.right.value = 2;
+        n.right = new Node;
+        n.right.value = 5;
+
+        return n;
+    }
+
+    void main()
+    Node root; 
+    {
+        root = input();
+        print('R');
+        print('=');
+        print(mostFrequentSubtreeSum(root));
+    }
+}

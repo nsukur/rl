@@ -1,0 +1,130 @@
+program FindCousins 
+    class Node {
+        int value;
+        Node left;
+        Node right;
+    }
+
+    class NResult {
+        int height;
+        int parentValue;
+    }
+
+    class CResult {
+        Node[] nodes;
+        int counter;
+    }
+{
+    // find nodes at the same tree height 
+    // cousins = with different parents
+
+    NResult findNode(Node tree, int value, int parentValue, int height)
+    NResult res, res2;
+    {
+        res = new NResult;
+        if (tree == null) {
+            res.height = -1;
+            res.parentValue = -1;
+            return res;
+        }
+        if (tree.value == value) {
+            res.height = height;
+            res.parentValue = parentValue;
+            return res;
+        }
+        res = findNode(tree.left, value, tree.value, height + 1);
+        res2 = findNode(tree.right, value, tree.value, height + 1);
+        if (res.height == -1 && res.parentValue == -1) {
+            return res2;
+        }
+
+        return res;
+    }
+
+    CResult concat(CResult r1, CResult r2)
+    CResult res;
+    int i;
+    {
+        res = new CResult;
+        res.counter = r1.counter + r2.counter;
+        res.nodes = new Node[r1.counter + r2.counter];
+
+        i = 0;
+        while (i < r1.counter) {
+            res.nodes[i] = r1.nodes[i];
+            i++;
+        }
+        while (i < res.counter) {
+            res.nodes[i] = r2.nodes[i - r1.counter];
+            i++;
+        }
+
+        return res;
+    }
+
+    CResult getCousins(Node tree, int value, int parentValue, int height)
+    CResult res;
+    {
+        res = new CResult;
+        res.counter = 0;
+        
+        if (tree == null || tree.value == parentValue) {
+            return res;    
+        } 
+        if (height == 0) {
+            res.nodes = new Node[1];
+            res.nodes[0] = new Node;
+            res.nodes[0].value = tree.value;
+            res.counter++;
+            return res;
+        }
+        
+        res = concat(getCousins(tree.left, value, parentValue, height - 1), getCousins(tree.right, value, parentValue, height - 1));
+
+        return res;
+    }
+
+    CResult listCousins(Node tree, int value)
+    NResult node;
+    {
+        node = findNode(tree, value, 0, 0);
+        return getCousins(tree, value, node.parentValue, node.height);
+    }
+
+    Node init()
+    Node root;
+    {
+        root = new Node;
+        root.value = 1;
+        
+        root.left = new Node;
+        root.left.value = 2;
+        root.left.left = new Node;
+        root.left.left.value = 4;
+        root.left.right = new Node;
+        root.left.right.value = 6;
+        
+        root.right = new Node;
+        root.right.value = 3;
+        root.right.right = new Node;
+        root.right.right.value = 5;
+
+        return root;
+    }
+
+    void main()
+    Node root;
+    CResult res;
+    int i;
+    {
+        root = init();
+        res = listCousins(root, 5);
+        i = 0;
+        print('[');
+        while (i < res.counter) {
+            print(res.nodes[i].value, 3);
+            i++;
+        }
+        print(']', 3);
+    }
+}

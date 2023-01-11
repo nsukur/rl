@@ -1,0 +1,57 @@
+program MaxSubarrayKadane {
+    int[] load() 
+		int[] res;
+		int c,num,in; {
+		print('l');
+        print('?');
+        read(num);
+		res = new int[num];
+        c = 0;
+        while (c < num) {
+                print(c);
+                print('?');
+                read(in);
+                res[c] = in;
+                c++;
+        }
+		return res;
+	}
+    
+    void main()
+    int N, max, maxDo, i, d, ood, doo;
+    int[] x;
+    {
+        x = load();
+        N = len(x);
+
+        max = 0;
+        maxDo = 0;
+        i = 0;
+        while (i < N) {
+            if (maxDo == 0) {
+                d = i;
+            }
+            maxDo = maxDo + x[i];
+            if (maxDo < 0) {
+                maxDo = 0;
+            }
+            if (maxDo > max) {
+                ood = d;
+                doo = i;
+                max = maxDo;
+            }
+            i++;
+        }
+        print('\n');
+        print('m');
+        print('=');
+        print(max);
+
+        print('\n');
+        print('i');
+        print('=');
+        print(ood);
+        print('-');
+        print(doo);      
+    }
+}

@@ -1,0 +1,97 @@
+program HasCharMap 
+    char[] s1;
+    char[] s2;
+{
+    int hasCharMap()
+    char[] chars; 
+    int i;
+    {
+        if (len(s1) != len(s2)) {
+            return 0;
+        }
+
+        chars = new char[26];
+        i = 0;
+        while (i < len(chars)) {
+            chars[i] = ' ';
+            i++;
+        }
+
+        i = 0;
+        while (i < len(s1)) {
+            if (chars[ord(s1[i]) - 97] == ' ') {
+                chars[ord(s1[i]) - 97] = s2[i];
+            } else if (chars[ord(s1[i]) - 97] != s2[i]) {
+                return 0;
+            }
+            i++;
+        }
+
+        return 1;
+    }
+
+    void init1() {
+        s1 = new char[3];
+        s1[0] = 'a';
+        s1[1] = 'b';
+        s1[2] = 'c';
+
+        s2 = new char[3];
+        s2[0] = 'd';
+        s2[1] = 'e';
+        s2[2] = 'f';
+    }
+
+    void init2() {
+        s1 = new char[3];
+        s1[0] = 'a';
+        s1[1] = 'b';
+        s1[2] = 'c';
+
+        s2 = new char[3];
+        s2[0] = 'd';
+        s2[1] = 'e';
+        s2[2] = 'e';
+    }
+
+    void init3() {
+        s1 = new char[3];
+        s1[0] = 'a';
+        s1[1] = 'a';
+        s1[2] = 'c';
+
+        s2 = new char[3];
+        s2[0] = 'd';
+        s2[1] = 'e';
+        s2[2] = 'f';
+    }
+
+    void main() 
+    int r;
+    {
+        init1();
+        r = hasCharMap();
+        if (r == 1) {
+            print('T');
+        } else {
+            print('F');
+        }
+        print('\n');
+
+        init2();
+        r = hasCharMap();
+        if (r == 1) {
+            print('T');
+        } else {
+            print('F');
+        }
+        print('\n');
+        init3();
+        r = hasCharMap();
+        if (r == 1) {
+            print('T');
+        } else {
+            print('F');
+        }
+    }
+}

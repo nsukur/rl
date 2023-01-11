@@ -1,0 +1,367 @@
+C:" This file was automatically converted from microjava bytecode
+    using mjc2wsl v1.1.0
+   -options:
+    popPush        (pp/ht):true
+    localVarBlocks (lo/gl):true
+    localsAsArrays (ar/sp):false
+    inlinePrint:           false
+";
+
+BEGIN
+VAR <
+	
+	mjvm_flag_jump := 0,
+	mjvm_statics := ARRAY(0,0),
+	mjvm_arrays := < >,
+	mjvm_objects := < >,
+	mjvm_estack := < >, mjvm_mstack := < > > :
+SKIP;
+ ACTIONS a78 :
+ a14 ==
+PUSH(mjvm_mstack,mjvm_locals_0);
+PUSH(mjvm_mstack,mjvm_locals_1);
+PUSH(mjvm_mstack,mjvm_locals_2);
+PUSH(mjvm_mstack,mjvm_locals_3);
+POP(mjvm_locals_0, mjvm_estack);
+CALL a17
+ END
+ a17 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a18
+ END
+ a18 ==
+PUSH(mjvm_estack,1);
+CALL a19
+ END
+ a19 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+IF tempb <= tempa THEN mjvm_flag_jump := 1 ELSE mjvm_flag_jump := 0 FI;
+ENDVAR;
+IF mjvm_flag_jump = 1 THEN CALL a76 ELSE CALL a22 FI;
+SKIP
+ END
+ a22 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a23
+ END
+ a23 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_arrays := mjvm_arrays ++ < ARRAY(tempa,0) >;
+PUSH(mjvm_estack,LENGTH(mjvm_arrays));
+ENDVAR;
+CALL a25
+ END
+ a25 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_1 := tempa;
+ENDVAR;
+CALL a26
+ END
+ a26 ==
+PUSH(mjvm_estack,0);
+CALL a27
+ END
+ a27 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_2 := tempa;
+ENDVAR;
+CALL a28
+ END
+ a28 ==
+PUSH(mjvm_estack,1);
+CALL a29
+ END
+ a29 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_3 := tempa;
+ENDVAR;
+CALL a30
+ END
+ a30 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_2;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a31
+ END
+ a31 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a32
+ END
+ a32 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+IF tempb >= tempa THEN mjvm_flag_jump := 1 ELSE mjvm_flag_jump := 0 FI;
+ENDVAR;
+IF mjvm_flag_jump = 1 THEN CALL a49 ELSE CALL a35 FI;
+SKIP
+ END
+ a35 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_1;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a36
+ END
+ a36 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_2;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a37
+ END
+ a37 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_3;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a38
+ END
+ a38 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempres, mjvm_estack);
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+mjvm_arrays[tempb][tempa+1]:=tempres;
+ENDVAR;
+CALL a39
+ END
+ a39 ==
+mjvm_locals_2 := mjvm_locals_2 + 1;
+CALL a42
+ END
+ a42 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_3;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a43
+ END
+ a43 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a44
+ END
+ a44 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+tempres := tempb * tempa;
+PUSH(mjvm_estack,tempres);
+ENDVAR;
+CALL a45
+ END
+ a45 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_3 := tempa;
+ENDVAR;
+CALL a46
+ END
+ a46 ==
+CALL a30;
+SKIP
+ END
+ a49 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a50
+ END
+ a50 ==
+PUSH(mjvm_estack,1);
+CALL a51
+ END
+ a51 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+tempres := tempb - tempa;
+PUSH(mjvm_estack,tempres);
+ENDVAR;
+CALL a52
+ END
+ a52 ==
+CALL a14;
+CALL a55
+ END
+ a55 ==
+PUSH(mjvm_estack,0);
+CALL a56
+ END
+ a56 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_2 := tempa;
+ENDVAR;
+CALL a57
+ END
+ a57 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_2;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a58
+ END
+ a58 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a59
+ END
+ a59 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+IF tempb >= tempa THEN mjvm_flag_jump := 1 ELSE mjvm_flag_jump := 0 FI;
+ENDVAR;
+IF mjvm_flag_jump = 1 THEN CALL a73 ELSE CALL a62 FI;
+SKIP
+ END
+ a62 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_1;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a63
+ END
+ a63 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_2;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a64
+ END
+ a64 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+PUSH(mjvm_estack,mjvm_arrays[tempb][tempa+1]);
+ENDVAR;
+CALL a65
+ END
+ a65 ==
+PUSH(mjvm_estack,3);
+CALL a66
+ END
+ a66 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ(tempb,tempa);
+ENDVAR;
+CALL a67
+ END
+ a67 ==
+mjvm_locals_2 := mjvm_locals_2 + 1;
+CALL a70
+ END
+ a70 ==
+CALL a57;
+SKIP
+ END
+ a73 ==
+PUSH(mjvm_estack,0);
+CALL a74
+ END
+ a74 ==
+PUSH(mjvm_estack,5);
+CALL a75
+ END
+ a75 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ(tempb,tempa);
+ENDVAR;
+CALL a76
+ END
+ a76 ==
+POP(mjvm_locals_3, mjvm_mstack);
+POP(mjvm_locals_2, mjvm_mstack);
+POP(mjvm_locals_1, mjvm_mstack);
+POP(mjvm_locals_0, mjvm_mstack);
+CALL a77
+ END
+ a77 ==
+SKIP
+ END
+ b77 ==
+CALL a78
+ END
+ a78 ==
+PUSH(mjvm_mstack,mjvm_locals_0);
+CALL a81
+ END
+ a81 ==
+PUSH(mjvm_estack,5);
+CALL a82
+ END
+ a82 ==
+VAR < tempa := 0 > : 
+POP(tempa, mjvm_estack);
+mjvm_locals_0 := tempa;
+ENDVAR;
+CALL a83
+ END
+ a83 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a84
+ END
+ a84 ==
+CALL a14;
+CALL a87
+ END
+ a87 ==
+POP(mjvm_locals_0, mjvm_mstack);
+CALL a88
+ END
+ a88 ==
+SKIP
+ END
+ b88 ==
+SKIP
+ END
+ENDACTIONS;
+
+SKIP
+ENDVAR
+
+WHERE
+
+FUNCT CHR(num) ==:
+	(@List_To_String(< num >))
+END
+
+PROC Print_MJ(val, format VAR)==
+PRINFLUSH(@Format(format, val ))
+END
+
+PROC Print_MJ_CHAR(val, format VAR)==
+PRINFLUSH(@Format(format, CHR(val)))
+END
+
+END

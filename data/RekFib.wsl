@@ -1,0 +1,255 @@
+C:" This file was automatically converted from microjava bytecode
+    using mjc2wsl v1.1.0
+   -options:
+    popPush        (pp/ht):true
+    localVarBlocks (lo/gl):true
+    localsAsArrays (ar/sp):false
+    inlinePrint:           false
+";
+
+BEGIN
+VAR <
+	
+	mjvm_flag_jump := 0,
+	mjvm_statics := ARRAY(0,0),
+	mjvm_arrays := < >,
+	mjvm_objects := < >,
+	mjvm_estack := < >, mjvm_mstack := < > > :
+SKIP;
+ ACTIONS a50 :
+ a14 ==
+PUSH(mjvm_mstack,mjvm_locals_0);
+POP(mjvm_locals_0, mjvm_estack);
+CALL a17
+ END
+ a17 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a18
+ END
+ a18 ==
+PUSH(mjvm_estack,0);
+CALL a19
+ END
+ a19 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+IF tempb <> tempa THEN mjvm_flag_jump := 1 ELSE mjvm_flag_jump := 0 FI;
+ENDVAR;
+IF mjvm_flag_jump = 1 THEN CALL a25 ELSE CALL a22 FI;
+SKIP
+ END
+ a22 ==
+PUSH(mjvm_estack,0);
+CALL a23
+ END
+ a23 ==
+POP(mjvm_locals_0, mjvm_mstack);
+CALL a24
+ END
+ a24 ==
+SKIP
+ END
+ b24 ==
+CALL a25
+ END
+ a25 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a26
+ END
+ a26 ==
+PUSH(mjvm_estack,1);
+CALL a27
+ END
+ a27 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+IF tempb <> tempa THEN mjvm_flag_jump := 1 ELSE mjvm_flag_jump := 0 FI;
+ENDVAR;
+IF mjvm_flag_jump = 1 THEN CALL a33 ELSE CALL a30 FI;
+SKIP
+ END
+ a30 ==
+PUSH(mjvm_estack,1);
+CALL a31
+ END
+ a31 ==
+POP(mjvm_locals_0, mjvm_mstack);
+CALL a32
+ END
+ a32 ==
+SKIP
+ END
+ b32 ==
+CALL a33
+ END
+ a33 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a34
+ END
+ a34 ==
+PUSH(mjvm_estack,2);
+CALL a35
+ END
+ a35 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+tempres := tempb - tempa;
+PUSH(mjvm_estack,tempres);
+ENDVAR;
+CALL a36
+ END
+ a36 ==
+CALL a14;
+CALL a39
+ END
+ a39 ==
+VAR < tempa := 0 > : 
+tempa :=mjvm_locals_0;
+PUSH(mjvm_estack,tempa);
+ENDVAR;
+CALL a40
+ END
+ a40 ==
+PUSH(mjvm_estack,1);
+CALL a41
+ END
+ a41 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+tempres := tempb - tempa;
+PUSH(mjvm_estack,tempres);
+ENDVAR;
+CALL a42
+ END
+ a42 ==
+CALL a14;
+CALL a45
+ END
+ a45 ==
+VAR < tempa := 0, tempb := 0, tempres := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+tempres := tempb + tempa;
+PUSH(mjvm_estack,tempres);
+ENDVAR;
+CALL a46
+ END
+ a46 ==
+POP(mjvm_locals_0, mjvm_mstack);
+CALL a47
+ END
+ a47 ==
+SKIP
+ END
+ b47 ==
+CALL a48
+ END
+ a48 ==
+ERROR("Runtime error: trap(1)");
+CALL a50
+ END
+ a50 ==
+CALL a53
+ END
+ a53 ==
+PUSH(mjvm_estack,0);
+CALL a54
+ END
+ a54 ==
+CALL a14;
+CALL a57
+ END
+ a57 ==
+PUSH(mjvm_estack,3);
+CALL a58
+ END
+ a58 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ(tempb,tempa);
+ENDVAR;
+CALL a59
+ END
+ a59 ==
+PUSH(mjvm_estack,2);
+CALL a60
+ END
+ a60 ==
+CALL a14;
+CALL a63
+ END
+ a63 ==
+PUSH(mjvm_estack,3);
+CALL a64
+ END
+ a64 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ(tempb,tempa);
+ENDVAR;
+CALL a65
+ END
+ a65 ==
+PUSH(mjvm_estack,7);
+CALL a70
+ END
+ a70 ==
+CALL a14;
+CALL a73
+ END
+ a73 ==
+PUSH(mjvm_estack,3);
+CALL a74
+ END
+ a74 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ(tempb,tempa);
+ENDVAR;
+CALL a75
+ END
+ a75 ==
+CALL a76
+ END
+ a76 ==
+SKIP
+ END
+ b76 ==
+SKIP
+ END
+ENDACTIONS;
+
+SKIP
+ENDVAR
+
+WHERE
+
+FUNCT CHR(num) ==:
+	(@List_To_String(< num >))
+END
+
+PROC Print_MJ(val, format VAR)==
+PRINFLUSH(@Format(format, val ))
+END
+
+PROC Print_MJ_CHAR(val, format VAR)==
+PRINFLUSH(@Format(format, CHR(val)))
+END
+
+END

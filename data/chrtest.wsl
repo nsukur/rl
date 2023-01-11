@@ -1,0 +1,131 @@
+C:" This file was automatically converted from microjava bytecode
+    using mjc2wsl v1.1.0
+   -options:
+    popPush        (pp/ht):true
+    localVarBlocks (lo/gl):true
+    localsAsArrays (ar/sp):false
+    inlinePrint:           false
+";
+
+BEGIN
+VAR <
+	
+	mjvm_flag_jump := 0,
+	mjvm_statics := ARRAY(0,0),
+	mjvm_arrays := < >,
+	mjvm_objects := < >,
+	mjvm_estack := < >, mjvm_mstack := < > > :
+SKIP;
+ ACTIONS a14 :
+ a14 ==
+CALL a17
+ END
+ a17 ==
+PUSH(mjvm_estack,65);
+CALL a22
+ END
+ a22 ==
+PUSH(mjvm_estack,5);
+CALL a23
+ END
+ a23 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a24
+ END
+ a24 ==
+PUSH(mjvm_estack,65);
+CALL a29
+ END
+ a29 ==
+PUSH(mjvm_estack,5);
+CALL a30
+ END
+ a30 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a31
+ END
+ a31 ==
+PUSH(mjvm_estack,10);
+CALL a36
+ END
+ a36 ==
+PUSH(mjvm_estack,2);
+CALL a37
+ END
+ a37 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a38
+ END
+ a38 ==
+PUSH(mjvm_estack,97);
+CALL a43
+ END
+ a43 ==
+PUSH(mjvm_estack,5);
+CALL a44
+ END
+ a44 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ(tempb,tempa);
+ENDVAR;
+CALL a45
+ END
+ a45 ==
+PUSH(mjvm_estack,97);
+CALL a50
+ END
+ a50 ==
+PUSH(mjvm_estack,5);
+CALL a51
+ END
+ a51 ==
+VAR < tempa := 0, tempb := 0 > : 
+POP(tempa, mjvm_estack);
+POP(tempb, mjvm_estack);
+Print_MJ_CHAR(tempb,tempa);
+ENDVAR;
+CALL a52
+ END
+ a52 ==
+CALL a53
+ END
+ a53 ==
+SKIP
+ END
+ b53 ==
+SKIP
+ END
+ENDACTIONS;
+
+SKIP
+ENDVAR
+
+WHERE
+
+FUNCT CHR(num) ==:
+	(@List_To_String(< num >))
+END
+
+PROC Print_MJ(val, format VAR)==
+PRINFLUSH(@Format(format, val ))
+END
+
+PROC Print_MJ_CHAR(val, format VAR)==
+PRINFLUSH(@Format(format, CHR(val)))
+END
+
+END

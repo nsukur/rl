@@ -1,0 +1,81 @@
+program RansomNote 
+{
+    // given letters in a magazine, check if you can
+    // create the ransom note
+
+    char[] load() 
+		char[] res;
+        char in;
+		int c, num; {
+		print('l');
+		print('?');
+		read(num);
+		res = new char[num];
+                c = 0;
+                while (c<num) {
+                        print(c);
+                        print('?');
+                        read(in);
+                        if (ord(in) == 10) {
+                            read(in);
+                        }
+                        res[c] = in;
+                        c++;
+                }
+		return res;
+	}
+
+    int check(char[] note, char[] magazine) 
+    int[] letters;
+    int i;
+    {
+        letters = new int[26];
+        
+        i = 0;
+        while (i < len(magazine)) {
+            if (ord(magazine[i]) >= 65 && ord(magazine[i]) <= 90) {
+                letters[ord(magazine[i]) - 65]++;
+            } else if (ord(magazine[i]) >= 97 && ord(magazine[i]) <= 122) {
+                letters[ord(magazine[i]) - 97]++;
+            }
+            i++;
+        }
+
+        i = 0;
+        while (i < len(note)) {
+            if (ord(note[i]) >= 65 && ord(note[i]) <= 90) {
+                letters[ord(note[i]) - 65]--;
+                if (letters[ord(note[i]) - 65] < 0) {
+                    return 0;
+                }
+            } else if (ord(note[i]) >= 97 && ord(note[i]) <= 122) {
+                letters[ord(note[i]) - 97]--;
+                if (letters[ord(note[i]) - 97] < 0) {
+                    return 0;
+                }
+            }
+            i++;
+        }
+
+        return 1;
+    }
+    
+    void main() 
+    char[] magazine, note;
+    int response;
+    {
+        print('M'); print(':');
+        print('\n');
+        magazine = load();
+        print('N'); print(':');
+        print('\n');
+        note = load();
+        response = check(note, magazine);
+        print('\n');
+        if (response == 1) {
+            print('Y');
+        } else {
+            print('N');
+        }
+    }
+}

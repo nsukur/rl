@@ -1,0 +1,107 @@
+program MergeIntervals
+    // merge overlapping intervals
+    class Interval {
+        int[] time;
+    }
+
+    int resSize;
+{
+    void sort(Interval[] arr)
+		int i, j;
+        Interval key;
+	{
+		i = 1;
+		while (i < len(arr)) {
+			key = arr[i];
+			j = i - 1;
+
+			while (j >= 0 && arr[j].time[0] > key.time[0]) {
+				arr[j + 1] = arr[j];
+				j--;
+			}
+			arr[j + 1] = key;
+
+			i++;
+		}
+	}
+
+    Interval[] merge(Interval[] intervals) 
+    Interval[] res;
+    int i;
+    {
+        resSize = 0;
+        sort(intervals);
+        res = new Interval[len(intervals)];
+        
+        i = 0;
+        while (i < len(intervals)) {
+            // i == 0 means that res is still empty
+            if (i == 0 || res[resSize-1].time[1] < intervals[i].time[0]) {
+                res[resSize] = intervals[i];
+                resSize++;
+            } else {
+                if (intervals[i].time[1] > res[resSize-1].time[1]) {
+                    res[resSize-1].time[1] = intervals[i].time[1];
+                }
+            }
+            i++;
+        }
+
+        return res;
+    }
+
+    void printIntervals(Interval[] intervals) 
+    int i;
+    {
+        i = 0;
+        print('[');
+        print(' ');
+        while (i < len(intervals) && intervals[i] != null) {
+            print('[');
+            print(intervals[i].time[0]);
+            print(intervals[i].time[1], 4);
+            print(']');
+            print(' ');
+            i++;
+        }
+        print(']');
+        print('\n');
+    }
+
+    Interval[] init() 
+    Interval[] intervals;
+    Interval in;
+    int l, i, s, e;
+    {
+        print('l');
+        print('?');
+        read(l);
+        intervals = new Interval[l];
+        i = 0;
+        while (i < l) {
+            in = new Interval;
+            in.time = new int[2];
+            print('s'); print('?');
+            read(s);
+            print('e'); print('?');
+            read(e);
+            in.time[0] = s;
+            in.time[1] = e;
+            
+            intervals[i] = in;
+        
+            i++;
+        }
+        return intervals;
+    }
+
+    void main() 
+    Interval[] i;
+    {
+        i = init();
+        printIntervals(i);
+        print('R'); print(':');
+        print('\n');
+        printIntervals(merge(i));
+    }
+}

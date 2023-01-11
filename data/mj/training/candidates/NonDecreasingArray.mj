@@ -1,0 +1,58 @@
+program NonDecreasingArray
+{
+    // given an array n, check if it could become non-decreasing by
+    // modifying **at most** 1 element
+    
+    int nonDecreasing(int[] nums) 
+    int index, i;
+    {
+        index = -1;
+        i = 0;
+        while (i < len(nums) - 1) {
+            if (nums[i] > nums[i + 1]) {
+                if (index != -1) {
+                    return 0;
+                }
+                index = i;
+            }
+            i++;
+        }
+        if (index == -1) {
+            return 1;
+        }
+        if (index == 0 || index == len(nums) - 2) {
+            return 1;
+        }
+        if (nums[index] <= nums[index + 2]) {
+            return 1;
+        }
+        if (nums[index - 1] <= nums[index + 1]) {
+            return 1;
+        }
+        return 0;
+    }
+    
+    void main() 
+    int n, i;
+    int[] nums;
+    {
+        print('n');
+        print('?');
+        read(n);
+        nums = new int[n];
+        i = 0;
+        while (i < n) {
+            print('e');
+            print(i);
+            print('?');
+            read(nums[i]);
+            i++;
+        }
+        if (nonDecreasing(nums) == 1) {
+            print('Y');
+        } else {
+            print('N');
+        }
+
+    }
+}

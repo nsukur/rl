@@ -1,0 +1,21 @@
+program gcdinput{
+
+	void main()
+		int a;
+		int b;
+	{
+		print('a');
+		print('?');
+		read(a);
+		print('b');
+		print('?');
+		read(b);
+		while (a != b) {
+			if (a>b) 
+				a = a-b;
+			if (a<b)
+				b = b-a;
+		}
+		print(a,3);
+	}
+}
