@@ -1,0 +1,60 @@
+#!/usr/bin/env -S wsl -q
+C:"Print features for each node of a program. List node,gen.type,spec.type,value";
+
+C:"Copyright (C) 2022 Natasa Sukur, natasa.sukur@dmi.uns.ac.rs
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.";
+
+debug := 0;
+
+MW_FUNCT @Current_Node_Name() == 
+	VAR< path := "N" >:
+		FOR p IN @Posn()
+		DO path := path ++ "_" ++ p OD;
+	(path) END;	
+	
+MW_PROC @Print_Features() ==
+	IF debug = 1
+	THEN PRINT (@Posn()); @PP_Item(@I, 80, "") FI;
+	@WS(@Current_Node_Name()); @WS(","); @WS(@String(@GT(@I))); @WS(","); @WS(@String(@ST(@I))); 
+	IF @Has_Value_Type?(@ST(@I)) THEN
+		@WS(",\""); @WS(@String(@V(@I))); @WS("\"") FI;
+	@WL("");
+	
+	IF @Down? THEN
+		@Down();
+		@Print_Features();
+		WHILE @Right? DO
+			@Right();
+			@Print_Features() OD;
+		@Up() FI;
+	
+	SKIP. ;
+
+Argv := TAIL(ARGV);
+IF Argv = < >
+   THEN
+	PRINT("Outputs information about nodes for a WSL file");
+	PRINT("args: a file name for input, optionally another file ",
+		     "to print the output into")
+ELSE 
+	@New_Program(@Parse_File(Argv[1], T_Statements));
+
+	IF LENGTH(Argv) > 1
+		THEN @Write_To(Argv[2]) FI;
+	
+	@Print_Features()
+FI;
+
+SKIP

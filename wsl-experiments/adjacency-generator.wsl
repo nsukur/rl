@@ -1,0 +1,71 @@
+#!/usr/bin/env -S wsl -q
+C:"Print all nodes and their children for a program. List all nodes as parent[,child]*";
+
+C:"Copyright (C) 2022 Natasa Sukur, natasa.sukur@dmi.uns.ac.rs
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.";
+  
+debug := 0;
+
+MW_FUNCT @Current_Node_Name() == 
+	VAR< path := "N" >:
+		FOR p IN @Posn()
+		DO path := path ++ "_" ++ p OD;
+	(path) END;
+	
+MW_PROC @Print_Adjacency() ==
+	IF debug = 1
+	THEN PRINT (@Posn()); @PP_Item(@I, 80, "") FI;
+	@WS(@Current_Node_Name());
+	
+	C:"Print children";
+	IF @Down? THEN
+		@Down();
+		@WS(",");
+		@WS(@Current_Node_Name());
+		WHILE @Right? DO
+			@Right();
+			@WS(",");
+			@WS(@Current_Node_Name()) OD;
+		@Up() FI; 
+	
+	@WL("");	
+	
+	C:"call for each child";
+	IF @Down? THEN
+		@Down();	
+		@Print_Adjacency();
+		WHILE @Right? DO
+			@Right();
+			@Print_Adjacency(); OD;
+		@Up() FI;
+	
+	SKIP .;
+	
+Argv := TAIL(ARGV);
+IF Argv = < >
+   THEN
+	PRINT("Outputs all nodes and their children for a WSL file");
+	PRINT("args: a file name for input, optionally another file ",
+		     "to print the output into")
+ELSE 
+	@New_Program(@Parse_File(Argv[1], T_Statements));
+
+	IF LENGTH(Argv) > 1
+		THEN @Write_To(Argv[2]) FI;
+	
+	@Print_Adjacency()
+FI;
+
+SKIP

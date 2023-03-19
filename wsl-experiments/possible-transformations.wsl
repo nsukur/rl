@@ -1,0 +1,101 @@
+#!/usr/bin/env -S wsl -q
+C:"Print possible transformations for a program. List all pairs of transf,node";
+
+C:"Copyright (C) 2022 Doni Pracner, doni.pracner@dmi.uns.ac.rs
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.";
+
+transfs := @Make_Set(<
+    TR_Absorb_Left, TR_Absorb_Right,
+    TR_Align_Nested_Statements,  TR_Array_To_Vars,
+    TR_Collapse_Action_System, TR_Constant_Propagation,
+    TR_D_Do_To_Floop, TR_Decrement_Statement, TR_Delete_All_Assertions,
+    TR_Delete_All_Skips, TR_Delete_Item,
+    TR_Delete_Redundant_Statement,
+    TR_Delete_What_Follows, TR_Double_To_Single_Loop,
+    TR_Expand_And_Separate, TR_Expand_Call,
+    TR_Expand_Forward, TR_Floop_To_While,
+    TR_Fully_Absorb_Right, TR_Fully_Expand_Forward,
+    TR_Join_All_Cases, TR_Make_Loop,
+    TR_Merge_Calls_In_Action, TR_Merge_Calls_In_System, TR_Merge_Cond_Right,
+    TR_Merge_Left, TR_Merge_Right, TR_Move_To_Left,
+    TR_Move_To_Right, TR_Partially_Join_Cases,
+    TR_Proc_To_Funct, TR_Push_Pop,
+    TR_Recursion_To_Loop,
+    TR_Remove_Redundant_Vars, TR_Reverse_Order,
+    TR_Roll_Loop, TR_Separate_Both, TR_Separate_Left,
+    TR_Separate_Right,
+    TR_Simplify, TR_Simplify_Action_System,
+    TR_Simplify_If, TR_Simplify_Item,
+    TR_Stack_To_Par, TR_Stack_To_Return, TR_Stack_To_Var,
+    TR_Substitute_And_Delete,
+    TR_Take_Out_Of_Loop,
+    TR_Unroll_Loop, TR_Use_Assertion,
+    TR_While_To_Abort, TR_While_To_Floop, TR_While_To_For_In, TR_While_To_Reduce
+>);
+  
+debug := 0;
+
+MW_FUNCT @Current_Node_Name() == 
+	VAR< path := "N" >:
+		FOR p IN @Posn()
+		DO path := path ++ "_" ++ p OD;
+	(path) END;
+
+MW_PROC @List_Transformations() ==
+	FOR tr IN transfs
+		DO @WL(TRs_Name[tr]) OD
+	.;
+
+MW_PROC @Print_Transformations() ==
+	IF debug = 1
+	THEN PRINT(@Posn()); @PP_Item(@I, 80, "") FI;
+	
+	VAR< node := @Current_Node_Name() >:
+		FOR tr IN transfs
+		DO IF @Trans?(tr)
+			THEN @WS(TRs_Name[tr]);
+				@WS(",");
+				@WL(node) FI OD
+	ENDVAR;
+
+	C:"Print children";
+	IF @Down? THEN
+		@Down();
+		@Print_Transformations();
+		WHILE @Right? DO
+			@Right();
+			@Print_Transformations() OD;
+		@Up() FI;
+	SKIP .;
+
+Argv := TAIL(ARGV);
+IF Argv = < >
+   THEN
+	PRINT("Outputs possible transformations for a WSL file");
+	PRINT("args: a file name for input, optionally another file ",
+		     "to print the output into")
+ELSIF Argv[1] = "-l" OR Argv[1] = "--list"
+	THEN
+	  @List_Transformations()
+ELSE 
+	@New_Program(@Parse_File(Argv[1], T_Statements));
+
+	IF LENGTH(Argv) > 1
+		THEN @Write_To(Argv[2]) FI;
+	
+	@Print_Transformations()
+FI;
+
+SKIP

@@ -1,0 +1,33 @@
+#!/usr/bin/env -S wsl -q
+C:"Return the chosen metric value for a program";
+C:"Part of the automation process with external tools.";
+
+C:"Copyright (C) 2022 Doni Pracner, doni.pracner@dmi.uns.ac.rs
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.";
+
+Argv := TAIL(ARGV);
+IF Argv = < >
+   THEN
+	PRINT("Return the chosen metric for the proces for  a given WSL file.");
+	PRINT("args: input filename");
+ELSE 
+	IF LENGTH(Argv) < 1
+	THEN PRINT("Needs 1 argument: input filename")
+	ELSE
+		@New_Program(@Parse_File(Argv[1], T_Statements));
+		C:"For now just structure metric; in the future might be a parameter";
+		PRINT(@Struct_Metric(@Program));
+	FI
+FI

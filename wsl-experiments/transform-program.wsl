@@ -1,0 +1,73 @@
+#!/usr/bin/env -S wsl -q
+C:"Transform a program with the given transf at the given node (custom format).";
+
+C:"Copyright (C) 2022 Doni Pracner, doni.pracner@dmi.uns.ac.rs
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.";
+
+verbose := 0;
+
+MW_FUNCT @Transf_By_Name(name) ==
+	VAR< i:= adt_TR_Next_Number, transf := 0>:
+	WHILE i > 0 AND transf = 0 DO
+		IF TRs_Name[i] = name THEN transf := i FI;
+		i := i - 1 OD
+	(transf) .;
+	
+C:" Split a string into a list of words: ";
+MW_FUNCT @Split_Underscore(str) ==
+  VAR < R := < >, p := 0, q := INDEX("_", str, 0) >:
+  WHILE q >= 0 DO
+    IF q > p THEN R := <@String_To_Num(SUBSTR(str, p, q - p))> ++ R FI;
+    p := q + 1;
+    q := INDEX("_", str, q + 1) OD;
+  IF p < SLENGTH(str) THEN R := <@String_To_Num(SUBSTR(str, p))> ++ R FI;
+  (REVERSE(R)) .;
+
+
+Argv := TAIL(ARGV);
+IF Argv = < >
+   THEN
+	PRINT("Transform a given WSL file at a position with the given transf.");
+	PRINT("args: input filename, transf name, node name");
+	PRINT("  -optionally another file to print the output into")
+ELSE 
+	IF LENGTH(Argv) < 3
+	THEN PRINT("Needs at least 3 arguments: input filename, transf name, node name")
+	ELSE
+	@New_Program(@Parse_File(Argv[1], T_Statements));
+	IF verbose = 1 
+		THEN @Checkpoint("") FI;
+	transf := @Transf_By_Name(Argv[2]);
+	IF transf = 0 THEN ERROR("Transf not found by name!") 
+	ELSE IF verbose = 1
+		THEN PRINT("Found transf number:",transf) FI;FI;
+	
+	C:"Conver node name, skip the starting N_";
+	pos := TAIL(@Split_Underscore(Argv[3]));
+	IF verbose = 1 THEN PRINT(pos) FI;
+
+	IF NOT @Valid_Posn?(@I, pos) 
+		THEN ERROR("Invalid pos",pos) FI;
+	
+	@Goto(pos);
+	@Trans(transf, "");
+	outfile := "";
+	IF LENGTH(Argv) > 3
+		THEN outfile := Argv[4] FI;
+	@Checkpoint(outfile);
+
+	SKIP
+	FI;
+FI
